@@ -1,0 +1,23 @@
+#+TITLE: Readme
+* Nux, a wrapper over nix-env written in rust. *BETA SOFTWARE*
+** Why?
+Nux simplies the complicated sturcture with nix, and nix-env. This project is inspired by projects like /hey/ from hlissner's nix dotfiles. Unlike simple wrappers, like /hey/, it provides a progress bar and some other nice features
+** Import note
+Please do not this in production. It may destroy your system. This is BETA software. Feel free to test at your own risk. Contributions are welcome.  *Nux only works on NixOS for now!*
+** Feature checklist
+- [-] Install command
+- [ ] Config file at ~/.config/nux/nux.toml
+- [ ] Cool search features
+- [ ] Interactive search and install mode, inspired by /paru/.
+- [ ] Upgrade Command
+- [ ] Uninstall command
+- [ ] Man page
+- [-] Nix /default.nix/ derivation
+- [ ] Working nix flake
+- [ ] Maybe a rust nixpkgs crate?
+- [ ] Other linux/macos distro support vcz
+** Crates used
+- clap for arg parsing
+- console, indicatif and dialoguer for colors, progressbars etc..
+- JSON for parsing nix command results
+- duct for safely running /nix-env/
