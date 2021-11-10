@@ -28,13 +28,14 @@ pub mod app {
                 .long("debug")
                 .help("Shows the output of the nix cmds. For debugging purposes.")
                 )
-                .subcommand(clap::App::new("upgrade")
+
+        )
+             .subcommand(clap::App::new("upgrade")
                             .arg(clap::Arg::with_name("packagename")
                                  .help("The target package to upgrade. This is optional")
                             )
                 )
 
-        )
         .setting(clap::AppSettings::SubcommandRequiredElseHelp);
     }
 }

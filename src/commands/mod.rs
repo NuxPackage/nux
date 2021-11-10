@@ -1,3 +1,3 @@
 pub mod install;
-mod upgrade;
+pub mod upgrade;
 mod util;

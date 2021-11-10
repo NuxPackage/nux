@@ -57,7 +57,7 @@ pub fn install_subcommand(app: ArgMatches) {
     }
     spinner.enable_steady_tick(20);
 
-    let mut nix_install_cmd = nix_install_cmds.start().unwrap();
+    let nix_install_cmd = nix_install_cmds.start().unwrap();
 
     let output = str::from_utf8(&nix_install_cmd.wait().unwrap().stderr).unwrap();
 
