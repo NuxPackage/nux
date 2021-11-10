@@ -1,6 +1,6 @@
-use crate::commands::util;
 use crate::commands::util::doesTermSupportColor;
-use clap::ArgMatches;
+use indicatif::ProgressBar;
+
 use console::style;
 use dialoguer::Confirm;
 use duct::cmd;
@@ -19,13 +19,26 @@ pub fn upgrade_subcommand(app: clap::ArgMatches) {
     if app.is_present("packagename") {
         let package_name = app.value_of("packagename").unwrap();
 
-        let mut nix_install_cmds = cmd!("nix-env", "-u", app.value_of("packagename").unwrap())
+        let nix_install_cmds = cmd!("nix-env", "-u", app.value_of("packagename").unwrap())
             .unchecked()
             .stdout_capture()
             .stderr_capture();
-        let mut nix_install_cmd = nix_install_cmds.start().unwrap();
+        let nix_install_cmd = nix_install_cmds.start().unwrap();
 
+        if doesTermSupportColor() {
+            println!(
+                "{} {}",
+                style("Intalling Package ").green().bold().bright(),
+                style(package_name).bold()
+            );
+        } else {
+            println!("Installing package{}", package_name)
+        }
+
+        let spinner = ProgressBar::new_spinner();
+        spinner.enable_steady_tick(30);
         let output = std::str::from_utf8(&nix_install_cmd.wait().unwrap().stderr).unwrap();
+        spinner.finish_and_clear();
         if output.contains("error") {
             if doesTermSupportColor() {
                 println!(
@@ -37,6 +50,8 @@ pub fn upgrade_subcommand(app: clap::ArgMatches) {
             } else {
                 println!("Packcage {} had an error updating", package_name)
             }
+            println!("Cause:");
+            println!("{}", output);
         } else {
             if doesTermSupportColor() {
                 println!(
