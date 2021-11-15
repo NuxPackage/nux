@@ -1,11 +1,4 @@
-{ lib, stdenv
-, fetchFromGitHub
-, rustPlatform
-, asciidoctor
-, installShellFiles
-, pkg-config
-, Security
-}:
+with (import <nixpkgs> {});
 
 rustPlatform.buildRustPackage rec {
   pname = "nux";

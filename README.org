@@ -19,5 +19,5 @@ Please do not this in production. It may destroy your system. This is BETA softw
 ** Crates used
 - clap for arg parsing
 - console, indicatif and dialoguer for colors, progressbars etc..
-- JSON for parsing nix command results
+- Serde JSON for parsing nix command results
 - duct for safely running /nix-env/

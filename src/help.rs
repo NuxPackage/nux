@@ -1,7 +1,7 @@
-pub static INSTALL_DISCUSSION: &str = r"DISCUSSION:
-The install command is a wrapper over
+pub static install_discussion: &str = r"discussion:
+the install command is a wrapper over
 nix-env -i
-This command is more for consitency.
-If you use the -a flag, this translates into
-nix-env -iA
+this command is more for consitency.
+if you use the -a flag, this translates into
+nix-env -ia
 ";

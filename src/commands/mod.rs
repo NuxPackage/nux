@@ -1,3 +1,5 @@
 pub mod install;
+pub mod remove;
+pub mod sail;
 pub mod upgrade;
-mod util;
+pub mod util;

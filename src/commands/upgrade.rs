@@ -5,17 +5,6 @@ use console::style;
 use dialoguer::Confirm;
 use duct::cmd;
 pub fn upgrade_subcommand(app: clap::ArgMatches) {
-    /////////////////////////////////////////////////////////////////////////////////////////
-    // let mut nix_install_cmds = cmd!("nix-env", "-i", package_name)                      //
-    //     .unchiecked()                                                                    //
-    //     .stdout_capture()                                                               //
-    //     .stderr_capture();                                                              //
-    // let mut nix_install_cmd = nix_install_cmds.start().unwrap();                        //
-    //                                                                                     //
-    // let output = std::str::from_utf8(&nix_install_cmd.wait().unwrap().stderr).unwrap(); //
-    /////////////////////////////////////////////////////////////////////////////////////////
-
-    // TODO WORK ON THIS
     if app.is_present("packagename") {
         let package_name = app.value_of("packagename").unwrap();
 
@@ -83,7 +72,7 @@ pub fn upgrade_subcommand(app: clap::ArgMatches) {
         }
     }
 }
-fn _updateAllPackages(app: clap::ArgMatches) {
+fn _updateAllPackages(_app: clap::ArgMatches) {
     let nix_install_cmds = cmd!("nix-env", "-u")
         .unchecked()
         .stdout_capture()

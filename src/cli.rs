@@ -8,7 +8,6 @@ pub mod app {
             clap::SubCommand::with_name("install")
                 .about("Command for installing a package")
                 .alias("inst")
-                .after_help(crate::help::INSTALL_DISCUSSION)
                 .arg(clap::Arg::with_name("attr")
                      .short("a")
                      .long("attribute")
@@ -30,12 +29,37 @@ pub mod app {
                 )
 
         )
-             .subcommand(clap::App::new("upgrade")
+             .subcommand(clap::SubCommand::with_name("upgrade")
                             .arg(clap::Arg::with_name("packagename")
                                  .help("The target package to upgrade. This is optional")
                             )
-                )
+             )
+          .subcommand(clap::SubCommand::with_name("remove")
+               .about("Removes a package from to system")
+               .arg(clap::Arg::with_name("drvname")
+               .help("The target derivation is getting uninstalled.")
+               .required(true)
+
+               )
+                      )
+                      .subcommand(clap::SubCommand::with_name("sail")
+                                  .about("Interactively discover packages and install them!")
+                                  .arg(clap::Arg::with_name("query")
+                                       .required(true)
+                                       .validator(sail_validator)
+                                       .help("Yarr, ye sail around nixpkgs! Ye shall try it out!")
+                                  )
+     )
 
         .setting(clap::AppSettings::SubcommandRequiredElseHelp);
+    }
+    fn sail_validator(arg: String) -> Result<(), String> {
+        if (arg.len() >= 3) {
+            Ok(())
+        } else {
+            Err(String::from(
+                "Sorry, minimum 3 three characters in search query!",
+            ))
+        }
     }
 }

@@ -1,0 +1,38 @@
+= nux(1)
+Jakob Neufeld
+v0.1.0
+:doctype: manpage
+:manmanual: NUX
+:mansource: NUX
+:man-linkstyle: pass:[blue R < >]
+
+== Name
+
+nux - A wrapper over the nix cli tools!
+
+== Synopsis
+
+*nux* COMMAND
+
+== Options
+
+*-h, --help::
+Shows this help message
+*-v, --version::
+Shows the version of _nux_
+
+
+
+== Resources
+
+*Project web site:* https://eve.example.org
+
+
+== Commands
+
+*Run nux help for information about the commands     *
+
+== Copying
+
+Copyright (C) 2021 {author}. +
+Free use of this software is granted under the terms of the GPL v3 License.
