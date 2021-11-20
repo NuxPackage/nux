@@ -9,16 +9,16 @@
 
 rustPlatform.buildRustPackage rec {
   pname = "nux";
-  version = "0.1.0";
+  version = "0.1.3";
 
   src = fetchFromGitHub {
     owner = "NuxPackage";
     repo = pname;
     rev = version;
-    sha256 = "sha256-vjB4h134UHmeQmSoOQcHmnb26MH0TFGD/JWycsjVSIk=";
+    sha256 = lib.fakeHash;
   };
 
-  cargoSha256 = "sha256-pmHjijvM8evSA1XseAclKEmM5/M4s3h8GRTJr3typL8=";
+  cargoSha256 = "sha256-ztWYRFNwrWZPGKIujplQdiDSlLtgPy14DmbkdIPPqSQ=";
 
   preFixup = ''
     installManPage $releaseDir/build/nux-*/out/nux.1

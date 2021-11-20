@@ -2,16 +2,16 @@ with (import <nixpkgs> {});
 
 rustPlatform.buildRustPackage rec {
   pname = "nux";
-  version = "0.1.0";
+  version = "0.1.3";
 
   src = fetchFromGitHub {
     owner = "NuxPackage";
     repo = pname;
     rev = version;
-    sha256 = "sha256-vjB4h134UHmeQmSoOQcHmnb26MH0TFGD/JWycsjVSIk=";
+    sha256 = "sha256-LgA/Jnhcf063JbfG2gXXOq/r+gndxiarj3UazI7EmLs=";#lib.fakeHash;
   };
 
-  cargoSha256 = "sha256-pmHjijvM8evSA1XseAclKEmM5/M4s3h8GRTJr3typL8=";
+  cargoSha256 = "sha256-0K6P75DjD5XOJN+XHO4E0I1KEPOLu+Wn1emgTKvDsXs="; #lib.fakeHash;
 
   preFixup = ''
     installManPage $releaseDir/build/nux-*/out/nux.1
